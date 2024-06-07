@@ -33,6 +33,7 @@ const Docs = () => {
               </h2>
               <p className="text-gray-700 dark:text-gray-300">
                 <ol className="list-decimal pl-8 mt-4">
+                  <li>Download Dockerfile from <a className="text-orange-800 text-xl" href="https://github.com/longbuivan/dotfile/tree/main/datapods-oss">DataPod-OSS</a></li>
                   <li>Install necessary software and dependencies.(Docker)</li>
                   <li>Download Docker Compose file and run this command(`docker-compose up -d`)</li>
                   <li>Ensure services are created and run.</li>

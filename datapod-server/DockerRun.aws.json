@@ -1,0 +1,152 @@
+{
+    "Parameters": {
+        "DBName": {
+            "Description": "Database name",
+            "Type": "String",
+            "Default": "mydb"
+        },
+        "DBUser": {
+            "Description": "Database user",
+            "Type": "String",
+            "Default": "myuser"
+        },
+        "DBPassword": {
+            "Description": "Database password",
+            "Type": "String",
+            "Default": "mypassword"
+        }
+    },
+    "Resources": {
+        "Postgres": {
+            "Type": "AWS::ECS::TaskDefinition",
+            "Properties": {
+                "ContainerDefinitions": [
+                    {
+                        "Name": "postgres",
+                        "Image": "postgres:latest",
+                        "Memory": 512,
+                        "PortMappings": [
+                            {
+                                "ContainerPort": 5432,
+                                "HostPort": 5432
+                            }
+                        ],
+                        "Environment": [
+                            {
+                                "Name": "POSTGRES_DB",
+                                "Value": {
+                                    "Ref": "DBName"
+                                }
+                            },
+                            {
+                                "Name": "POSTGRES_USER",
+                                "Value": {
+                                    "Ref": "DBUser"
+                                }
+                            },
+                            {
+                                "Name": "POSTGRES_PASSWORD",
+                                "Value": {
+                                    "Ref": "DBPassword"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "Metabase": {
+            "Type": "AWS::ECS::TaskDefinition",
+            "Properties": {
+                "ContainerDefinitions": [
+                    {
+                        "Name": "metabase",
+                        "Image": "metabase/metabase:latest",
+                        "Memory": 512,
+                        "PortMappings": [
+                            {
+                                "ContainerPort": 3000,
+                                "HostPort": 3000
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "Mage": {
+            "Type": "AWS::ECS::TaskDefinition",
+            "Properties": {
+                "ContainerDefinitions": [
+                    {
+                        "Name": "mageai",
+                        "Image": "mageai/mageai:latest",
+                        "Memory": 512,
+                        "PortMappings": [
+                            {
+                                "ContainerPort": 3000,
+                                "HostPort": 3000
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "ALB": {
+            "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+            "Properties": {
+                "Subnets": ["subnet-12345678", "subnet-87654321"],
+                "SecurityGroups": ["sg-12345678"],
+                "Type": "application"
+            }
+        },
+        "ALBListener": {
+            "Type": "AWS::ElasticLoadBalancingV2::Listener",
+            "Properties": {
+                "LoadBalancerArn": { "Ref": "ALB" },
+                "Port": 80,
+                "Protocol": "HTTP",
+                "DefaultActions": [
+                    {
+                        "Type": "forward",
+                        "TargetGroupArn": { "Ref": "ALBTargetGroup" }
+                    }
+                ]
+            }
+        },
+        "ALBTargetGroup": {
+            "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+            "Properties": {
+                "Port": 80,
+                "Protocol": "HTTP",
+                "VpcId": "vpc-12345678"
+            }
+        },
+        "ALBListenerRule": {
+            "Type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+            "Properties": {
+                "ListenerArn": { "Ref": "ALBListener" },
+                "Priority": 1,
+                "Conditions": [
+                    {
+                        "Field": "path-pattern",
+                        "Values": ["/metabase*"]
+                    }
+                ],
+                "Actions": [
+                    {
+                        "Type": "forward",
+                        "TargetGroupArn": { "Ref": "MetabaseTargetGroup" }
+                    }
+                ]
+            }
+        },
+        "MetabaseTargetGroup": {
+            "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+            "Properties": {
+                "Port": 3000,
+                "Protocol": "HTTP",
+                "VpcId": "vpc-12345678"
+            }
+        }
+    }
+}

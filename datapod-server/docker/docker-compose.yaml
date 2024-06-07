@@ -4,7 +4,7 @@ services:
     image: mageai/mageai:latest
     command: mage start ${PROJECT_NAME}
     env_file:
-      - dev.env
+      - .env_dev
     build:
       context: .
       dockerfile: Dockerfile.Mage
@@ -26,12 +26,13 @@ services:
     ports:
       - 3456:3000
     environment:
-      MB_DB_TYPE: postgres
-      MB_DB_DBNAME: datawarehouse
-      MB_DB_PORT: 5432
-      MB_DB_USER: metabase_admin
-      MB_DB_PASS: meTaBaSeAdmin
-      MB_DB_HOST: postgres
+      - .env_dev
+      # MB_DB_TYPE: postgres
+      # MB_DB_DBNAME: datawarehouse
+      # MB_DB_PORT: 5432
+      # MB_DB_USER: metabase_admin
+      # MB_DB_PASS: meTaBaSeAdmin
+      # MB_DB_HOST: postgres
     healthcheck:
       test: curl --fail -I http://localhost:3000/api/health || exit 1
       interval: 15s
@@ -43,6 +44,7 @@ services:
     container_name: postgres
     hostname: postgres
     environment:
-      POSTGRES_USER: metabase_admin
-      POSTGRES_DB: datawarehouse
-      POSTGRES_PASSWORD: meTaBaSeAdmin
+      - .env_dev
+      # POSTGRES_USER: metabase_admin
+      # POSTGRES_DB: datawarehouse
+      # POSTGRES_PASSWORD: meTaBaSeAdmin

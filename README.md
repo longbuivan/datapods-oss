@@ -2,7 +2,7 @@
 
 ## Description
 
-![Background](/assets/background.jpeg)
+<!-- ![Background](/docs/assets/background.jpeg) -->
 <sub>If you have been spent late night with data ingestion and data migration</sub>
 
 - This project data project includes lightweight k8s yaml files for creating the development environment, testing environment, Proof of Concept, Proof of Service or even support for **Small Business**.
@@ -17,7 +17,7 @@
 
 - Docker containers or Kubernetes is PLUS, below picture provides curated selection of third party for DataPods.
 
-![Service Collection](/assets/servicesCollection.png)
+<!-- ![Service Collection](/docs/assets/servicesCollection.png) -->
 
 Check out the reference documentation for more information and know why DataPods is available:
 
@@ -27,22 +27,42 @@ Check out the reference documentation for more information and know why DataPods
 |Data Ingestion & Integration | [Mage]() | Helping to easy connect and ingest data from multiple sources.|
 | Database | [PostgreSQL]() | Storing internal data, metadata, or even data warehouse. |
 | Data Warehouse | [Clickhouse (optional)]() | Building CUBE, OLAP |
-| Visualization | [Grafana]() | Visualizing charts, dashboard |
+| Visualization | [Metabase]() | Visualizing charts, dashboard |
 | Audit and logging | [Prometheus]() | Getting metrics from system, maintaining infrastructure. |
 
 *Note: Reaching out to me if you have any questions help help needs*
 
-## (Option 1) Running on Minikube
+## (Option 1) Running Docker
 
-If you are using [Minikube](https://minikube.sigs.k8s.io/docs/start/),
+* Docker is a platform that allows you to automate the deployment, scaling, and management of applications. It uses containerization technology to bundle an application and its dependencies into a single object.
 
-```shell
-minikube start
+* Docker Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application's services. Then, with a single command, you create and start all the services from your configuration.
 
-minikube dashboard --url
+Here's a step-by-step guide on how to deploy your application using Docker Compose:
+
+Ensure Docker and Docker Compose are installed on your machine. You can check this by running `docker --version` and `docker-compose --version` in your terminal.
+
+Navigate to the directory containing your `docker-compose.yml` file. In your case, it's `/path/to/your/project`.
+
+Pull the latest versions of all the images used by the services defined in your `docker-compose.yml` file by running `docker-compose pull`.
+
+Build your services using `docker-compose build`. This will create Docker images for your services.
+
+Finally, run your services in detached mode (in the background) using `docker-compose up -d`.
+
+Here's how you can do this in your terminal:
+
+```makefile
+.PHONY: start
+
+start:
+    cd /path/to/your/project && \
+    docker-compose pull && \
+    docker-compose build && \
+    docker-compose up -d
 ```
 
-## (Option 2) Running on Kind or Orbstack (Depends on running Machine)
+## (Option 2) Running Kubernetes
 
 Install some packages of plugin that support for development and testing.
 
@@ -186,7 +206,7 @@ vim /etc/hosts
 
 ### 3. Access with your domain
 
-![Access](/assets/viz-etl.png)
+<!-- ![Access](/docs/assets/viz-etl.png) -->
 
 ### 4. Connect to database
 
@@ -205,7 +225,7 @@ kubectl get pods -o wide -n analytics-project
 
 Connect to database using Grafana data source and start to visualize your data!
 
-![Connect database](/assets/connect-db.png)
+<!-- ![Connect database](/docs/assets/connect-db.png) -->
 
 ## Demo
 
@@ -213,4 +233,4 @@ Contact for demonstration and proof of services
 
 [mailto:longbuivan95@gmail.com](mailto:longbuivan95@gmail.com)
 
-<!-- ![](/assets/DemoLive.gif) -->
+![](/docs/assets/DemoLive.gif)

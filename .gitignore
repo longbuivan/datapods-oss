@@ -1,0 +1,9 @@
+pycache
+file_versions
+ssh_tunnel
+etl*
+*draft.drawio
+*.icloud
+duckdb*
+!duckdb.yaml
+
