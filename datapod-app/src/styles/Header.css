@@ -1,0 +1,36 @@
+.header-container {
+  height: 500px; /* Adjust the height as needed */
+  background-image: url('../../public/assets/background.jpeg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff; /* Text color */
+  text-align: center;
+  opacity: 80%;
+}
+
+.header-content {
+  background-color: rgba(0, 0, 0, 0.5); /* Background color with opacity */
+  padding: 100px;
+  /* border-radius: 8px; */
+}
+/* Additional styles for the h1 element */
+.header-content h1 {
+  font-size: 5rem;
+  margin: 10;
+}
+
+.header-title {
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace 
+}
+
+.header-description {
+  font-size: 2rem;
+  /* white-space: 2rem; */
+  font-family:Verdana, Geneva, Tahoma, sans-serif
+  /* -webkit-font-smoothing: antialiased; */
+  /* text-rendering: optimizeLegibility; */
+}

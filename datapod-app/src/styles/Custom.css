@@ -1,0 +1,19 @@
+/* Example CSS for different parts of the content */
+.description {
+    font-size: 16px;
+    color: #333;
+    /* Add any other styles for the description */
+  }
+  
+  .image-container {
+    text-align: center;
+    margin-top: 20px;
+    /* Add any other styles for the image container */
+  }
+  
+  .link {
+    color: blue;
+    text-decoration: underline;
+    /* Add any other styles for the link */
+  }
+  
