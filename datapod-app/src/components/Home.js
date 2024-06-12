@@ -174,9 +174,9 @@ const Home = () => {
             </div>
           </section>
 
-          {/* <section className="max-w-2xl mx-auto mb-8"> */}
           <section className="max-w-2xl mx-auto mb-8">
             <h2 className="text-2xl font-bold mb-4">Services Collection</h2>
+            <p>Focus on self-hosted, open-source-software,and customable</p>
             <div className="max-w-40 max-h-20 mx-auto mb-8 flex justify-center gap-2">
               <img
                 src="assets/banner/docker.jpeg"
@@ -198,6 +198,11 @@ const Home = () => {
                 src="assets/banner/mage-ai.jpeg"
                 alt="Mage AI"
                 className="w-small rounded-lg shadow-md"
+              />
+              <img
+                src="assets/banner/more.svg"
+                alt="More"
+                className="w-small rounded-lg shadow-md p-5"
               />
             </div>
           </section>

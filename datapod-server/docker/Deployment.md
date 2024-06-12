@@ -27,3 +27,11 @@
 Remember to replace any placeholder values in your Docker Compose file with actual values before deploying.
 
 For more detailed instructions, refer to the [official Render documentation](https://render.com/docs).
+
+.PHONY: start
+
+start:
+    cd /path/to/your/project && \
+    docker-compose pull && \
+    docker-compose build && \
+    docker-compose up -d
