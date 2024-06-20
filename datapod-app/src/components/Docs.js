@@ -131,7 +131,11 @@ const Docs = () => {
                 alt="metabase dashboard"
                 className="w-small rounded-lg shadow-md"
               />
-
+              <img
+                src="assets/demo/metabaseBookingPermDash.png"
+                alt="metabase dashboard 2"
+                className="w-small rounded-lg shadow-md"
+              />
               <h2 className="text-2xl font-semibold mb-4">
                 Cloud-Native Data Platform
               </h2>

@@ -1,0 +1,96 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: mage-user
+  namespace: analytics-project
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: analytics-project
+  name: job-manager
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["batch", "extensions"]
+  resources: ["jobs", "jobs/status"]
+  verbs: ["create", "delete", "get"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: mage-job-manager
+  namespace: analytics-project
+subjects:
+- kind: ServiceAccount
+  name: mage-user # Name of the ServiceAccount
+  namespace: analytics-project
+roleRef:
+  kind: Role # This must be Role or ClusterRole
+  name: job-manager # This must match the name of the Role or ClusterRole you wish to bind to
+  apiGroup: rbac.authorization.k8s.io
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mage-server
+  namespace: analytics-project
+  labels:
+    app: mage-server
+spec:
+  containers:
+  - name: mage-server
+    image: mageai/mageai:latest
+    ports:
+    - containerPort: 6789
+    volumeMounts:
+    - name: etl-volume
+      mountPath: /etl
+    - name: mage-fs
+      mountPath: /home/src
+    - name: kube-api-access-khf85
+      readOnly: true
+      mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+  volumes:
+  - name: etl-volume
+    hostPath:
+      path: /etl
+  - name: mage-fs
+    hostPath:
+      path: /etl
+  - name: kube-api-access-khf85
+    projected:
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          name: kube-root-ca.crt
+          items:
+          - key: ca.crt
+            path: ca.crt
+      - downwardAPI:
+          items:
+          - path: namespace
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+  serviceAccountName: mage-user
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mage
+  namespace: analytics-project
+spec:
+  selector:
+    app: mage-server
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 6789

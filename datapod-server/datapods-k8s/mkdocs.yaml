@@ -1,0 +1,164 @@
+site_name: DataPod Services
+# site_url: https://de-book.longdatadevlog.com/
+theme:
+  font:
+    # text: Verdana, Cambria, PT Serif, Arial, sans-serif, Calibri, IBM Plex Sans, Noto Sans, Georgia, Source Sans Pro
+    text: Source Sans Pro 400
+    code: Ubuntu Mono
+    # size:
+  highlightjs: true
+  name: makdocs-terminal
+
+  # icon:
+    # logo: material/library-shelves
+    # logo: images/icon
+
+  favicon: images/BookCover.png
+  locale: en
+
+  features:
+    - announce.dismiss
+    - search.suggest
+    # - header.autohide
+    # - navigation.footer
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - content.footnote.tooltips
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    # - navigation.tabs
+    # - navigation.tabs.sticky
+    # - navigation.expand
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      primary: grey
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: grey
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+  analytics:
+    gtag: G-ABC123
+  hljs_languages:
+    - yaml
+    - python
+    - shell
+  # custom_dir: overrides
+  # theme_dir: overrides
+
+# repo_url: https://github.com/longbuivan/data-dev-interviews
+site_author: LongDataDevLog
+# site_description: 
+
+nav:
+  - Overview: README.md
+
+
+extra:
+  generator: true
+  analytics:
+    provider: google
+    # property: G-TKDVNXQC1X
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >-
+            Thanks for your feedback! Help us improve this page by
+            using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+
+  version:
+    default: development
+
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/longbuivan
+      name: github
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:longbuivan95@gmail.com
+      name: mail
+    - icon: fontawesome/brands/x-twitter
+      link: https://twitter.com/@longdatadevlog
+      name: x-twitter
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/long-bui-van
+      name: linkedin
+    - icon: fontawesome/brands/youtube
+      link: httpt://youtube.com/@longdatadevlog
+      name: youtube
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - tables
+  - smarty
+  - md_in_html
+  - attr_list
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      linenums: true
+      pygments_lang_class: true
+      linenums_style: pymdownx-inline
+      auto_title: true
+  - pymdownx.inlinehilite
+  - admonition
+  - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - javascripts/tablesort.js
+
+plugins:
+  - search
+  # - tags:
+  #     tags_file: tags.md
+
+copyright: Copyright &copy; longdatadevlog - longddl
+# footer: "Subscribe to get more shared resources"
