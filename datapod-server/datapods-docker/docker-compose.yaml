@@ -23,6 +23,7 @@ services:
     hostname: metabase
     volumes:
       - /dev/urandom:/dev/random:ro
+      - /plugins:/plugins
     ports:
       - 3456:3000
     environment:
