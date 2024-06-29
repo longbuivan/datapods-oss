@@ -4,19 +4,21 @@ import Header from "./Header";
 import {
   DownloadIcon,
   ExternalLinkIcon,
-  MoonIcon,
-  SunIcon,
+  MoonIcon, SunIcon, MenuIcon, XIcon
 } from "@heroicons/react/outline";
 import Nav from "./Nav";
 import downloadDockerFiles from "./Download";
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
-
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
   const TypingText = ({ text, typingSpeed }) => {
     const [displayText, setDisplayText] = useState("");
 
@@ -45,23 +47,27 @@ const Home = () => {
               <img src={"icon.svg"} alt="DataPods" className="h-8" href="/"/>
               <h1 className="text-xl font-bold">DataPods</h1>
             </div>
-            <nav className="flex space-x-4">
-              <a href="/" className="text-sm md:text-base">
-                Home
+            <nav className="hidden md:flex md:items-center md:space-x-4 ml-4">
+            <a href="/" className="block text-sm md:text-base py-2 md:py-0">
+            Home
               </a>
-              <a href="/services" className="text-sm md:text-base">
+              <a href="/services"
+                className="block text-sm md:text-base py-2 md:py-0">
                 Services
               </a>
-              <a href="/docs" className="text-sm md:text-base">
+              <a href="/docs" className="block text-sm md:text-base py-2 md:py-0">
                 Docs
               </a>
-              <a href="https://de-book.longdatadevlog.com" className="text-sm md:text-base">
-                More
+              <a href="https://de-book.longdatadevlog.com" className="block text-sm md:text-base py-2 md:py-0">
+                Knowledge Base
               </a>
-              {/* <a href="https://blogs.longdatadevlog.com" className="text-sm md:text-base">
+              {/* <a href="https://blogs.longdatadevlog.com" className="block text-sm md:text-base py-2 md:py-0">
                 About
               </a> */}
-              <button
+
+            </nav>
+          <div className="flex items-center space-x-4">
+          <button
                 onClick={toggleDarkMode}
                 className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
               >
@@ -71,8 +77,42 @@ const Home = () => {
                   <MoonIcon className="h-6 w-6" />
                 )}
               </button>
-            </nav>
-          </div>
+              <button
+                onClick={toggleNav}
+                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 md:hidden"
+              >
+                {isNavOpen ? (
+                  <XIcon className="h-6 w-6" />
+                ) : (
+                  <MenuIcon className="h-6 w-6" />
+                )}
+              </button>
+              </div>
+              </div>
+              <nav
+            className={`${
+              isNavOpen ? "block" : "hidden"
+            } md:hidden px-4 pb-4`}
+          >
+            <a href="/" className="block text-sm md:text-base py-2 md:py-0">
+              Home
+            </a>
+            <a
+              href="/services"
+              className="block text-sm md:text-base py-2 md:py-0"
+            >
+              Services
+            </a>
+            <a href="/docs" className="block text-sm md:text-base py-2 md:py-0">
+              Docs
+            </a>
+            <a
+              href="https://de-book.longdatadevlog.com"
+              className="block text-sm md:text-base py-2 md:py-0"
+            >
+              Knowledge Base
+            </a>
+          </nav>
         </header>
 
         <div className="p-6">
@@ -95,7 +135,7 @@ const Home = () => {
               className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-400 dark:hover:bg-gray-600 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex items-center space-x-2"
             >
               <ExternalLinkIcon className="h-5 w-5" />
-              <a href="/contact">Managed Service</a>
+              <a href="/contact" className="">Managed Service</a>
             </button>
             <button
               onClick={() => {
@@ -115,7 +155,7 @@ const Home = () => {
         </div>
         <Header />
 
-        <main className="container mx-auto px-2 py-8">
+        <main className="container mx-auto px-8 py-8">
           <section className="max-w-2xl mx-auto mb-8">
             <h2 className="text-2xl font-bold mb-4">Features</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

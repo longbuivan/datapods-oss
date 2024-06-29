@@ -1,45 +1,52 @@
 import React, { useState } from "react";
-import {
-  MoonIcon,
-  SunIcon,
-} from "@heroicons/react/outline";
-import Nav from "./Nav";
-
-import { CheckIcon } from "@heroicons/react/outline";
+import { MoonIcon, SunIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 
 const Docs = () => {
   const [darkMode, setDarkMode] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
+
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
   return (
     <div className={darkMode ? "dark" : ""}>
       <div className="bg-white dark:bg-black text-black dark:text-white">
-        <header className=" shadow">
+        <header className="shadow">
           <div className="container mx-auto px-4 py-1 flex justify-between items-center">
-            <div className="container mx-auto px-4 py-4 space-x-4 flex justify-left items-center">
-              <img src={"icon.svg"} alt="DataPods" className="h-8" />{" "}
-              {/* Use the imported SVG */}
+            <div className="flex items-center space-x-4">
+              <img src={"icon.svg"} alt="DataPods" className="h-8" />
               <h1 className="text-xl font-bold">DataPods</h1>
             </div>
-            {/* <Nav isDarkMode={darkMode} toggleDarkMode={toggleDarkMode} /> */}
-            <nav className="flex space-x-4">
-              <a href="/" className="text-sm md:text-base">
-                Home
-              </a>
-              <a href="/services" className="text-sm md:text-base">
-                Services
-              </a>
-              <a href="/docs" className="text-sm md:text-base">
-                Docs
-              </a>
-              <a href="https://de-book.longdatadevlog.com" className="text-sm md:text-base">
-                More
-              </a>
-              {/* <a href="https://blogs.longdatadevlog.com" className="text-sm md:text-base">
-                About
-              </a> */}
+              <nav className="hidden md:flex md:items-center md:space-x-4 ml-4">
+                <a href="/" className="block text-sm md:text-base py-2 md:py-0">
+                  Home
+                </a>
+                <a
+                  href="/services"
+                  className="block text-sm md:text-base py-2 md:py-0"
+                >
+                  Services
+                </a>
+                <a
+                  href="/docs"
+                  className="block text-sm md:text-base py-2 md:py-0"
+                >
+                  Docs
+                </a>
+                <a
+                  href="https://de-book.longdatadevlog.com"
+                  className="block text-sm md:text-base py-2 md:py-0"
+                >
+                  Knowledge Base
+                </a>
+              </nav>
+            {/* </div> */}
+            <div className="flex items-center space-x-4">
               <button
                 onClick={toggleDarkMode}
                 className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
@@ -50,8 +57,42 @@ const Docs = () => {
                   <MoonIcon className="h-6 w-6" />
                 )}
               </button>
-            </nav>
+              <button
+                onClick={toggleNav}
+                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 md:hidden"
+              >
+                {isNavOpen ? (
+                  <XIcon className="h-6 w-6" />
+                ) : (
+                  <MenuIcon className="h-6 w-6" />
+                )}
+              </button>
+            </div>
           </div>
+          <nav
+            className={`${
+              isNavOpen ? "block" : "hidden"
+            } md:hidden px-4 pb-4`}
+          >
+            <a href="/" className="block text-sm md:text-base py-2 md:py-0">
+              Home
+            </a>
+            <a
+              href="/services"
+              className="block text-sm md:text-base py-2 md:py-0"
+            >
+              Services
+            </a>
+            <a href="/docs" className="block text-sm md:text-base py-2 md:py-0">
+              Docs
+            </a>
+            <a
+              href="https://de-book.longdatadevlog.com"
+              className="block text-sm md:text-base py-2 md:py-0"
+            >
+              Knowledge Base
+            </a>
+          </nav>
         </header>
 
         <div className="max-w-2xl mx-auto mb-8">
@@ -64,11 +105,25 @@ const Docs = () => {
               </h2>
               <p className="text-gray-700 dark:text-gray-300">
                 <ol className="list-decimal pl-8 mt-4">
-                  <li>Download Dockerfile from <a className="text-orange-800 text-xl" href="https://github.com/longbuivan/dotfile/tree/main/datapods-oss">DataPod-OSS</a></li>
-                  <li>Install necessary software and dependencies.(Docker)</li>
-                  <li>Download Docker Compose file and run this command(`docker-compose up -d`)</li>
+                  <li>
+                    Download Dockerfile from{" "}
+                    <a
+                      className="text-orange-800 text-xl"
+                      href="https://github.com/longbuivan/dotfile/tree/main/datapods-oss"
+                    >
+                      DataPod-OSS
+                    </a>
+                  </li>
+                  <li>Install necessary software and dependencies. (Docker)</li>
+                  <li>
+                    Download Docker Compose file and run this command
+                    (`docker-compose up -d`)
+                  </li>
                   <li>Ensure services are created and run.</li>
-                  <li>Monitor and maintain the service regularly. Access services with corresponding ports</li>
+                  <li>
+                    Monitor and maintain the service regularly. Access services
+                    with corresponding ports
+                  </li>
                 </ol>
               </p>
             </section>
@@ -79,11 +134,11 @@ const Docs = () => {
               </h2>
               <p className="text-gray-700 dark:text-gray-300">
                 <ul className="list-disc pl-8 mt-4">
-                    <li>Full control over infrastructure and data.</li>
-                    <li>Customization and flexibility.</li>
-                    <li>Potential cost savings in the long run.</li>
-                    <li>Ability to meet specific compliance requirements.</li>
-                    <li>Independence from third-party providers.</li>
+                  <li>Full control over infrastructure and data.</li>
+                  <li>Customization and flexibility.</li>
+                  <li>Potential cost savings in the long run.</li>
+                  <li>Ability to meet specific compliance requirements.</li>
+                  <li>Independence from third-party providers.</li>
                 </ul>
               </p>
             </section>
@@ -122,10 +177,9 @@ const Docs = () => {
                 </ul>
               </p>
             </section>
-          </div>
-          <h1 className="text-3xl font-bold mb-8">Screenshots</h1>
+          <h1 className="text-3xl font-bold mt-8 mb-2">Screenshots</h1>
           <h2 className="text-2xl font-semibold mb-4">
-                Launch DataPods with Docker
+            Launch DataPods with Docker
           </h2>
           <section className="flex flex-col items-center justify-center mb-8">
             <div className="max-w-5xl grid grid-cols-1 gap-4">
@@ -139,7 +193,7 @@ const Docs = () => {
                 alt="docker up"
                 className="w-small rounded-lg shadow-md"
               />
-            <img
+              <img
                 src="assets/demo/docker-containers.png"
                 alt="docker containers"
                 className="w-small rounded-lg shadow-md"
@@ -147,26 +201,17 @@ const Docs = () => {
               <h2 className="text-2xl font-semibold mb-4">
                 Starting Application
               </h2>
-              <p className="text-gray-700 dark:text-gray-300">
-                Writing Pipeline to collect and extract your data from varying sources...
-              </p>
               <img
                 src="assets/demo/mage-pipeline.png"
                 alt="mage pipeline"
                 className="w-small rounded-lg shadow-md"
               />
-              <p className="text-gray-700 dark:text-gray-300">
-                Visualize data with Business Intelligence Tool
-              </p>
               <img
                 src="assets/demo/metabase-ui.png"
                 alt="metabase ui"
                 className="w-small rounded-lg shadow-md"
               />
-              <p className="text-gray-700 dark:text-gray-300">
-                Empower and get insights from your data, including KPIs and metrics
-              </p>
-            <img
+              <img
                 src="assets/demo/metabase-dashboard.png"
                 alt="metabase dashboard"
                 className="w-small rounded-lg shadow-md"
@@ -179,18 +224,16 @@ const Docs = () => {
               <h2 className="text-2xl font-semibold mb-4">
                 Cloud-Native Data Platform
               </h2>
-              <p className="text-gray-700 dark:text-gray-300">
-                Deploy everything to the Cloud Service, with less managed, save costs, and focus on Business & Operations.
-              </p>
               <img
                 src="assets/demo/RenderDeploymentAccount.png"
                 alt="deployment account"
                 className="w-small rounded-lg shadow-md"
               />
-
             </div>
           </section>
         </div>
+                  </div>
+
         <footer className="py-4">
           <div className="container mx-auto px-4 text-center">
             <p>&copy; 2024 DataPods. All rights reserved.</p>
