@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import {
+  MoonIcon,
+  SunIcon,
+} from "@heroicons/react/outline";
 import Nav from "./Nav";
 
 import { CheckIcon } from "@heroicons/react/outline";
@@ -19,7 +23,34 @@ const Docs = () => {
               {/* Use the imported SVG */}
               <h1 className="text-xl font-bold">DataPods</h1>
             </div>
-            <Nav isDarkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            {/* <Nav isDarkMode={darkMode} toggleDarkMode={toggleDarkMode} /> */}
+            <nav className="flex space-x-4">
+              <a href="/" className="text-sm md:text-base">
+                Home
+              </a>
+              <a href="/services" className="text-sm md:text-base">
+                Services
+              </a>
+              <a href="/docs" className="text-sm md:text-base">
+                Docs
+              </a>
+              <a href="https://de-book.longdatadevlog.com" className="text-sm md:text-base">
+                More
+              </a>
+              {/* <a href="https://blogs.longdatadevlog.com" className="text-sm md:text-base">
+                About
+              </a> */}
+              <button
+                onClick={toggleDarkMode}
+                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
+              >
+                {darkMode ? (
+                  <SunIcon className="h-6 w-6" />
+                ) : (
+                  <MoonIcon className="h-6 w-6" />
+                )}
+              </button>
+            </nav>
           </div>
         </header>
 
@@ -37,7 +68,7 @@ const Docs = () => {
                   <li>Install necessary software and dependencies.(Docker)</li>
                   <li>Download Docker Compose file and run this command(`docker-compose up -d`)</li>
                   <li>Ensure services are created and run.</li>
-                  <li>Monitor and maintain the service regularly. Access services with corresponding ports</li>                    
+                  <li>Monitor and maintain the service regularly. Access services with corresponding ports</li>
                 </ol>
               </p>
             </section>
@@ -52,7 +83,7 @@ const Docs = () => {
                     <li>Customization and flexibility.</li>
                     <li>Potential cost savings in the long run.</li>
                     <li>Ability to meet specific compliance requirements.</li>
-                    <li>Independence from third-party providers.</li>        
+                    <li>Independence from third-party providers.</li>
                 </ul>
               </p>
             </section>
@@ -116,16 +147,25 @@ const Docs = () => {
               <h2 className="text-2xl font-semibold mb-4">
                 Starting Application
               </h2>
+              <p className="text-gray-700 dark:text-gray-300">
+                Writing Pipeline to collect and extract your data from varying sources...
+              </p>
               <img
                 src="assets/demo/mage-pipeline.png"
                 alt="mage pipeline"
                 className="w-small rounded-lg shadow-md"
               />
+              <p className="text-gray-700 dark:text-gray-300">
+                Visualize data with Business Intelligence Tool
+              </p>
               <img
                 src="assets/demo/metabase-ui.png"
                 alt="metabase ui"
                 className="w-small rounded-lg shadow-md"
               />
+              <p className="text-gray-700 dark:text-gray-300">
+                Empower and get insights from your data, including KPIs and metrics
+              </p>
             <img
                 src="assets/demo/metabase-dashboard.png"
                 alt="metabase dashboard"
@@ -139,6 +179,9 @@ const Docs = () => {
               <h2 className="text-2xl font-semibold mb-4">
                 Cloud-Native Data Platform
               </h2>
+              <p className="text-gray-700 dark:text-gray-300">
+                Deploy everything to the Cloud Service, with less managed, save costs, and focus on Business & Operations.
+              </p>
               <img
                 src="assets/demo/RenderDeploymentAccount.png"
                 alt="deployment account"

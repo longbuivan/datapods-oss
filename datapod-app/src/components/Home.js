@@ -49,12 +49,18 @@ const Home = () => {
               <a href="/" className="text-sm md:text-base">
                 Home
               </a>
-              <a href="https://blogs.longdatadevlog.com" className="text-sm md:text-base">
-                About
+              <a href="/services" className="text-sm md:text-base">
+                Services
               </a>
               <a href="/docs" className="text-sm md:text-base">
                 Docs
               </a>
+              <a href="https://de-book.longdatadevlog.com" className="text-sm md:text-base">
+                More
+              </a>
+              {/* <a href="https://blogs.longdatadevlog.com" className="text-sm md:text-base">
+                About
+              </a> */}
               <button
                 onClick={toggleDarkMode}
                 className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"

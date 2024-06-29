@@ -9,11 +9,15 @@ import Home from "./Home";
 import Docs from "./Docs";
 import Contact from "./Contact";
 import Pricing from "./Prices";
+import ApplicationSelector from "./ApplicationSelector";
 
 function App() {
   return (
     <Router>
         <Switch>
+        <Route path="/services">
+            <ApplicationSelector />
+          </Route>
           <Route path="/docs">
             <Docs />
           </Route>
@@ -26,6 +30,7 @@ function App() {
           <Route path="/">
             <Home />
           </Route>
+
 x
         </Switch>
       {/* </AuthProvider> */}
