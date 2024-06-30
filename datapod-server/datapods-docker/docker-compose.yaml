@@ -17,35 +17,158 @@ services:
       - ./etl/:/home/src/${PROJECT_NAME}
     restart: on-failure:5
 
-  metabase:
-    image: metabase/metabase:latest
-    container_name: metabase
-    hostname: metabase
-    volumes:
-      - /dev/urandom:/dev/random:ro
-      - /plugins:/plugins
-    ports:
-      - 3456:3000
-    environment:
-      # - .env
-      MB_DB_TYPE: postgres
-      MB_DB_DBNAME: datawarehouse
-      MB_DB_PORT: 5432
-      MB_DB_USER: metabase_admin
-      MB_DB_PASS: Admin@123456
-      MB_DB_HOST: postgres
-    healthcheck:
-      test: curl --fail -I http://localhost:3000/api/health || exit 1
-      interval: 15s
-      timeout: 5s
-      retries: 5
+  # metabase:
+  #   image: metabase/metabase:latest
+  #   container_name: metabase
+  #   # hostname: metabase
+  #   volumes:
+  #     - /dev/urandom:/dev/random:ro
+  #     - /plugins:/tmp
+  #   ports:
+  #     - 4567:3000
+  #   environment:
+  #     # - .env
+  #     MB_DB_TYPE: postgres
+  #     MB_DB_DBNAME: datawarehouse
+  #     MB_DB_PORT: 5432
+  #     MB_DB_USER: metabase_admin
+  #     MB_DB_PASS: Admin@123456
+  #     MB_DB_HOST: warehouse
+  #   healthcheck:
+  #     test: curl --fail -I http://localhost:4567/api/health || exit 1
+  #     interval: 15s
+  #     timeout: 5s
+  #     retries: 5
 
-  postgres:
-    image: postgres:13
-    container_name: postgres
-    hostname: postgres
+  # nginx_metabase:
+  #   image: nginx:latest
+  #   ports:
+  #     - "4566:4566"
+  #   volumes:
+  #     - ./nginx_metabase.conf:/etc/nginx/conf.d/default.conf
+  #   depends_on:
+  #     - metabase
+  #   networks:
+  #     - app-network
+
+  # warehouse:
+  #   image: postgres:13
+  #   container_name: warehouse
+  #   hostname: warehouse
+  #   ports:
+  #     - 5432:5432
+  #   environment:
+  #     # - .env
+  #     POSTGRES_USER: metabase_admin
+  #     POSTGRES_DB: datawarehouse
+  #     POSTGRES_PASSWORD: Admin@123456
+
+  superset:
+    image: apache/superset:latest
+    container_name: superset
+    user: "root"
+    ports:
+      - "8088:8088"
     environment:
-      # - .env
-      POSTGRES_USER: metabase_admin
-      POSTGRES_DB: datawarehouse
-      POSTGRES_PASSWORD: Admin@123456
+      - SUPERSET_LOAD_EXAMPLES=no
+      - SUPERSET_CONFIG_PATH=/app/pythonpath/superset_config.py
+      # - SUPERSET_FEATURE_EMBEDDED_SUPERSET=true
+      # - SECRET_KEY="bWiEFiYwOv7cgUnU/1aItcKmYfnAqoOnCiuMYV+lDNeYZz3iMz1SU2pD"
+    volumes:
+      - ./superset:/home/superset
+      - ./superset_config.py:/app/pythonpath/superset_config.py
+    depends_on:
+      - db
+      - redis
+    networks:
+      - app-network
+  db:
+    env_file:
+    - path: .env # default
+      required: true
+    - path: docker/.env-local # optional override
+      required: false
+    image: postgres:13
+    container_name: superset_db
+    restart: unless-stopped
+    volumes:
+      - db_home:/var/lib/postgresql/data
+      - ./superset/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: superset
+      POSTGRES_USER: superset
+      POSTGRES_PASSWORD: superset
+    networks:
+      - app-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+      # PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: "False"
+    volumes:
+      - pgadmin_home:/var/lib/pgadmin
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+
+  redis:
+    image: redis:latest
+    networks:
+      - app-network
+
+  nginx_superset:
+    image: nginx:latest
+    ports:
+      - "3456:3456"
+    volumes:
+      - ./nginx_superset.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - superset
+
+  nginx_pgadmin:
+    image: nginx:latest
+    ports:
+      - "8091:8091"
+    volumes:
+      - ./nginx_pgadmin.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - pgadmin
+  # nginx_landing:
+  #   image: nginx:latest
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #     - ./conf.d/:/etc/nginx/conf.d/:ro
+  #   depends_on:
+  #     - superset
+    # networks:
+    #   - app-network
+
+  landingpage:
+    # image: landing_page:v01
+    build:
+      context: ../../datapod-app/
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+          - ../../datapod-app:/app
+volumes:
+  db_home:
+    external: false
+  superset_home:
+    external: false
+  pgadmin_home:
+    external: false
+
+
+
+networks:
+  app-network:
+    driver: bridge

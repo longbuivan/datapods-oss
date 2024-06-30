@@ -234,3 +234,32 @@ Contact for demonstration and proof of services
 [mailto:longbuivan95@gmail.com](mailto:longbuivan95@gmail.com)
 
 ![](/docs/assets/DemoLive.gif)
+
+
+## Launch Data Services
+
+### 1. Access to datapod-app and Create landing page image
+
+```bash
+docker build --no-cache -t landing_page:v01 .
+
+[+] Building 137.5s (11/11) FINISHED
+ => exporting to image                                                                                  16.5s
+ => => exporting layers                                                                                 16.4s
+ => => writing image sha256:bcb279eaf357801be49169582a57f2a52237ff044814b0dd1f222b7bb23e835d             0.0s
+ => => naming to docker.io/library/landing_page:v01
+```
+
+### 2. Acccess to datapod-server and compose up docker-compose file
+
+```bash
+docker-compose up -d
+
+[+] Running 6/6
+ ✔ Container datapods-docker-redis-1           Running                                                   0.0s
+ ✔ Container superset_db                       Running                                                   0.0s
+ ✔ Container datapods-docker-landingpage-1     Started                                                   1.1s
+ ✔ Container datapods-docker-mage-1            Running                                                   0.0s
+ ✔ Container superset                          Running                                                   0.0s
+ ✔ Container datapods-docker-nginx_superset-1  Running
+```

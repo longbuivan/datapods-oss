@@ -16,7 +16,7 @@ const Docs = () => {
   return (
     <div className={darkMode ? "dark" : ""}>
       <div className="bg-white dark:bg-black text-black dark:text-white">
-        <header className="shadow">
+        <header className="shadow mx-auto py-1">
           <div className="container mx-auto px-4 py-1 flex justify-between items-center">
             <div className="flex items-center space-x-4">
               <img src={"icon.svg"} alt="DataPods" className="h-8" />

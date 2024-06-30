@@ -11,13 +11,15 @@ const ApplicationSelector = () => {
   // const getIframeSrc = () => {
   //   switch (selectedApp) {
   //     case 'mage':
-  //       return 'http://host.docker.internal:6789';
+  //       return 'https://mage.datapods-docker.orb.local';
   //     case 'airflow':
-  //       return 'http://host.docker.internal:8080';
+  //       return 'https://airflow.datapods-docker.orb.local';
   //     case 'superset':
-  //       return 'http://host.docker.internal:3456';
+  //       return 'https://nginx-superset.datapods-docker.orb.local';
   //     case 'metabase':
-  //       return 'http://host.docker.internal:4566';
+  //       return 'https://metabase.datapods-docker.orb.local';
+  //     case 'postgres':
+  //       return 'https://nginx-pgadmin.datapods-docker.orb.local';
   //     default:
   //       return '';
   //   }
@@ -29,19 +31,19 @@ const ApplicationSelector = () => {
       case 'airflow':
         return 'https://airflow.apache.org/';
       case 'superset':
-        return 'https://superset.apache.org';
+        return 'https://en.wikipedia.org/wiki/Apache_Superset';
       case 'metabase':
         return 'https://www.metabase.com/';
       case 'postgres':
-        return 'https://www.postgresql.org/'
+        return 'https://en.wikipedia.org/wiki/PostgreSQL'
       default:
         return '/';
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen text-center bg-gray-800">
-      <h2 className="text-2xl font-bold text-white mb-10">This features are in developments, please visit <span><a className='text-yellow-500 hover:text-orange-500 underline' href='/docs'> Screenshots</a> </span>for getting more about DataPods</h2>
+    <div className="flex-col p-10 items-center justify-center h-screen text-center bg-gray-800">
+      <h2 className="text-2xl font-bold text-white mb-10">This features are in developments, please visit <span><a className='text-yellow-500 hover:text-orange-500 underline' href='/docs'> Screenshots</a> </span>for getting more about DataPods ...</h2>
       <h1 className="text-3xl font-bold text-white mb-2">Select an Application</h1>
       <div className="mb-4">
         <button
@@ -56,12 +58,12 @@ const ApplicationSelector = () => {
         >
           Airflow
         </button>
-        {/* <button
+        <button
           className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-2 rounded m-2"
           onClick={() => handleSelection('superset')}
         >
           Superset
-        </button> */}
+        </button>
         <button
           className="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-2 rounded m-2"
           onClick={() => handleSelection('metabase')}
