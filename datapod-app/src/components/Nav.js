@@ -12,19 +12,19 @@ const Nav = () => {
   return (
     <div className="">
       <nav className="flex space-x-4">
-        <a href="/" className="text-sm md:text-base">
+        <a href="/" className="text-base md:text-base">
           Home
         </a>
-        <a href="/services" className="text-sm md:text-base">
+        <a href="/services" className="text-base md:text-base">
           Services
         </a>
 
-        <a href="/docs" className="text-sm md:text-base">
+        <a href="/docs" className="text-base md:text-base">
           Docs
         </a>
         <a
           href="https://de-book.longdatadevlog.com"
-          className="text-sm md:text-base"
+          className="text-base md:text-base"
         >
           More
         </a>

@@ -22,31 +22,30 @@ const Docs = () => {
               <img src={"icon.svg"} alt="DataPods" className="h-8" />
               <h1 className="text-xl font-bold">DataPods</h1>
             </div>
-              <nav className="hidden md:flex md:items-center md:space-x-4 ml-4">
-                <a href="/" className="block text-sm md:text-base py-2 md:py-0">
+              <div className="hidden md:flex md:items-center md:space-x-4 ml-4">
+                <a href="/" className="block text-base md:text-base py-2 md:py-0">
                   Home
                 </a>
                 <a
                   href="/services"
-                  className="block text-sm md:text-base py-2 md:py-0"
+                  className="block text-base md:text-base py-2 md:py-0"
                 >
                   Services
                 </a>
                 <a
                   href="/docs"
-                  className="block text-sm md:text-base py-2 md:py-0"
+                  className="block text-base md:text-base py-2 md:py-0"
                 >
                   Docs
                 </a>
-                <a
+                {/* <a
                   href="https://de-book.longdatadevlog.com"
-                  className="block text-sm md:text-base py-2 md:py-0"
+                  className="block text-base md:text-base py-2 md:py-0"
                 >
                   Knowledge Base
-                </a>
-              </nav>
+                </a> */}
             {/* </div> */}
-            <div className="flex items-center space-x-4">
+            {/* <div className="flex items-center space-x-4"> */}
               <button
                 onClick={toggleDarkMode}
                 className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
@@ -74,32 +73,32 @@ const Docs = () => {
               isNavOpen ? "block" : "hidden"
             } md:hidden px-4 pb-4`}
           >
-            <a href="/" className="block text-sm md:text-base py-2 md:py-0">
+            <a href="/" className="block text-base md:text-base py-2 md:py-0">
               Home
             </a>
             <a
               href="/services"
-              className="block text-sm md:text-base py-2 md:py-0"
+              className="block text-base md:text-base py-2 md:py-0"
             >
               Services
             </a>
-            <a href="/docs" className="block text-sm md:text-base py-2 md:py-0">
+            <a href="/docs" className="block text-base md:text-base py-2 md:py-0">
               Docs
             </a>
-            <a
+            {/* <a
               href="https://de-book.longdatadevlog.com"
-              className="block text-sm md:text-base py-2 md:py-0"
+              className="block text-base md:text-base py-2 md:py-0"
             >
               Knowledge Base
-            </a>
+            </a> */}
           </nav>
         </header>
 
-        <div className="max-w-2xl mx-auto mb-8">
+        <div className=" doc-container max-w-2xl mx-auto mb-8">
           <div className="container mx-auto py-12 px-4">
             <h1 className="text-3xl font-bold mb-8">Documentation</h1>
 
-            <section className="mb-8">
+            <section className=" mb-8">
               <h2 className="text-2xl font-semibold mb-4">
                 How to Self-Host a Service
               </h2>

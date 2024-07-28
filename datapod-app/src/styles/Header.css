@@ -1,6 +1,6 @@
 .header-container {
   height: 500px; /* Adjust the height as needed */
-  background-image: url('../../public/assets/background.jpeg');
+  background-image: url('../../public/assets/DataPodsBackground.png');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -11,11 +11,6 @@
   opacity: 80%;
 }
 
-.header-content {
-  background-color: rgba(0, 0, 0, 0.5); /* Background color with opacity */
-  padding: 100px;
-  /* border-radius: 8px; */
-}
 /* Additional styles for the h1 element */
 .header-content h1 {
   font-size: 5rem;
@@ -24,7 +19,7 @@
 
 .header-title {
   font-size: 1rem;
-  font-family: 'Courier New', Courier, monospace 
+  font-family: 'Courier New', Courier, monospace
 }
 
 .header-description {

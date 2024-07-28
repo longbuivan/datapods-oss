@@ -35,22 +35,22 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-        </div>  
+        </div>
         <footer class="relative bg-blueGray-700 pt-8 pb-6">
             <div class="flex-center text-center lg:text-center ">
               <h4 class="text-3xl fonat-semibold text-blueGray-700 ">Boosting up productivity!</h4>
             </div>
             <div class="flex flex-wrap items-center">
               <div class="w-full md:w-4/12 px-4 mx-auto text-center">
-                <div class="text-sm text-blueGray-700 font-semibold py-1">
-                
+                <div class="text-base text-blueGray-700 font-semibold py-1">
+
                   Copyright © <span id="get-current-year">2023 - Long Bui. All rights reserved.</span>
                 </div>
               </div>
             </div>
         </footer>
       </div>
-  
+
   );
 };
 
