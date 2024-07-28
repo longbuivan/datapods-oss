@@ -12,19 +12,19 @@ const Nav = () => {
   return (
     <div className="">
       <nav className="flex space-x-4">
-        <a href="/" className="text-base md:text-base">
+        <a href="/" className="text-sm md:text-base">
           Home
         </a>
-        <a href="/services" className="text-base md:text-base">
+        <a href="/services" className="text-sm md:text-base">
           Services
         </a>
 
-        <a href="/docs" className="text-base md:text-base">
+        <a href="/docs" className="text-sm md:text-base">
           Docs
         </a>
         <a
           href="https://de-book.longdatadevlog.com"
-          className="text-base md:text-base"
+          className="text-sm md:text-base"
         >
           More
         </a>
@@ -34,7 +34,7 @@ const Nav = () => {
         {/* <a href="/pricing" className="">
                   Pricing
                 </a> */}
-        {/* <button
+        <button
           onClick={toggleDarkMode}
           className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
         >
@@ -43,7 +43,7 @@ const Nav = () => {
           ) : (
             <MoonIcon className="h-6 w-6" />
           )}
-        </button> */}
+        </button>
       </nav>
     </div>
   );

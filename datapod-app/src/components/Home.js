@@ -41,60 +41,82 @@ const Home = () => {
   return (
     <div className={darkMode ? "dark" : ""}>
       <div className="bg-white dark:bg-black text-black dark:text-white">
-      <div className="shadow flex items-center p-4">
-  <div className="container flex justify-between items-center">
-    <div className="flex items-start pl-16 space-x-4">
-      <a href="/">
-        <img src="icon.svg" alt="DataPods" className="h-8" />
-      </a>
-      <h1 className="text-base font-bold">DataPods</h1>
-    </div>
-    <div className="flex items-center hidden md:flex space-x-8">
-      <a href="/" className="block text-l md:text-base py-2 md:py-0">
-        Home
-      </a>
-      <a href="/services" className="block text-l md:text-base py-2 md:py-0">
-        Services
-      </a>
-      <a href="/docs" className="block text-l md:text-base py-2 md:py-0">
-        Docs
-      </a>
-      {/* <a href="https://de-book.longdatadevlog.com" className="block text-base md:text-base py-2 md:py-0">
-        Knowledge Base
-      </a> */}
-    </div>
-    <div className="flex items-end md:hidden">
-      <button
-        onClick={toggleNav}
-        className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
-      >
-        {isNavOpen ? (
-          <XIcon className="h-6 w-6" />
-        ) : (
-          <MenuIcon className="h-6 w-6" />
-        )}
-      </button>
-    </div>
-  </div>
-  <nav className={`${isNavOpen ? "block" : "hidden"} md:hidden pb-4`}>
-    <a href="/" className="block text-base md:text-base py-2 md:py-0">
-      Home
-    </a>
-    <a href="/services" className="block text-base md:text-base py-2 md:py-0">
-      Services
-    </a>
-    <a href="/docs" className="block text-base md:text-base py-2 md:py-0">
-      Docs
-    </a>
-    {/* <a href="https://de-book.longdatadevlog.com" className="block text-base md:text-base py-2 md:py-0">
-      Knowledge Base
-    </a> */}
-  </nav>
-</div>
+        <header className="shadow mx-auto py-1">
+          <div className="container mx-auto px-4 py-1 flex justify-between items-center">
+            <div className="flex items-center space-x-4">
+              <img src={"icon.svg"} alt="DataPods" className="h-8" href="/"/>
+              <h1 className="text-xl font-bold">DataPods</h1>
+            </div>
+            <nav className="hidden md:flex md:items-center md:space-x-4 ml-4">
+            <a href="/" className="block text-sm md:text-base py-2 md:py-0">
+            Home
+              </a>
+              <a href="/services"
+                className="block text-sm md:text-base py-2 md:py-0">
+                Services
+              </a>
+              <a href="/docs" className="block text-sm md:text-base py-2 md:py-0">
+                Docs
+              </a>
+              <a href="https://de-book.longdatadevlog.com" className="block text-sm md:text-base py-2 md:py-0">
+                Knowledge Base
+              </a>
+              {/* <a href="https://blogs.longdatadevlog.com" className="block text-sm md:text-base py-2 md:py-0">
+                About
+              </a> */}
 
+            </nav>
+          <div className="flex items-center space-x-4">
+          <button
+                onClick={toggleDarkMode}
+                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
+              >
+                {darkMode ? (
+                  <SunIcon className="h-6 w-6" />
+                ) : (
+                  <MoonIcon className="h-6 w-6" />
+                )}
+              </button>
+              <button
+                onClick={toggleNav}
+                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 md:hidden"
+              >
+                {isNavOpen ? (
+                  <XIcon className="h-6 w-6" />
+                ) : (
+                  <MenuIcon className="h-6 w-6" />
+                )}
+              </button>
+              </div>
+              </div>
+              <nav
+            className={`${
+              isNavOpen ? "block" : "hidden"
+            } md:hidden px-4 pb-4`}
+          >
+            <a href="/" className="block text-sm md:text-base py-2 md:py-0">
+              Home
+            </a>
+            <a
+              href="/services"
+              className="block text-sm md:text-base py-2 md:py-0"
+            >
+              Services
+            </a>
+            <a href="/docs" className="block text-sm md:text-base py-2 md:py-0">
+              Docs
+            </a>
+            <a
+              href="https://de-book.longdatadevlog.com"
+              className="block text-sm md:text-base py-2 md:py-0"
+            >
+              Knowledge Base
+            </a>
+          </nav>
+        </header>
 
         <div className="p-6">
-          <div className="container px-6 md:px-4 text-center mb-4">
+          <div className="container mx-auto px-6 md:px-4 text-center mb-4">
             <p className="text-2xl md:text-4xl leading-relaxed">
               <strong>
                 <TypingText
@@ -125,7 +147,7 @@ const Home = () => {
               <a href="/docs">Self-hosted</a>
             </button>
           </div>
-          <div className="header-title pb-5 text-base flex justify-center items-center">
+          <div className="header-title pb-5 text-xl flex justify-center items-center">
             <span className="text-yellow-500 hover:text-orange-500 underline">
               <a href="/docs">Screenshots</a>
             </span>
@@ -138,27 +160,27 @@ const Home = () => {
             <h2 className="text-2xl font-bold mb-4">Features</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="dark:bg-gray-900 p-4 rounded-lg shadow-md">
-                <h2 className="text-base font-bold mb-2">Mass Integration</h2>
+                <h2 className="text-xl font-bold mb-2">Mass Integration</h2>
                 <p>Collecting, transforming various sources.</p>
               </div>
               <div className="dark:bg-gray-900 p-4 rounded-lg shadow-md">
-                <h2 className="text-base font-bold mb-2">Unified Data</h2>
+                <h2 className="text-xl font-bold mb-2">Unified Data</h2>
                 <p>Centralizing data, super formats.</p>
               </div>
               <div className="dark:bg-gray-900 p-4 rounded-lg shadow-md">
-                <h2 className="text-base font-bold mb-2">Advanced Analytics</h2>
+                <h2 className="text-xl font-bold mb-2">Advanced Analytics</h2>
                 <p>Extracting insight, data as domain.</p>
               </div>
               <div className="dark:bg-gray-900 p-4 rounded-lg shadow-md">
-                <h2 className="text-base font-bold mb-2">HyperScale & Portable</h2>
+                <h2 className="text-xl font-bold mb-2">HyperScale & Portable</h2>
                 <p>ScaleFast, deploy everywhere.</p>
               </div>
             </div>
           </section>
 
-          {/* <section className="max-w-2xl mx-auto mb-8">
+          <section className="max-w-2xl mx-auto mb-8">
             <h2 className="text-2xl font-bold mb-4">Services Collection</h2>
-            <div>With <span className="text-green-800 text-base"><a>essential</a></span> of data platform, focusing on open-source-software, and customizable</div>
+            <div>With <span className="text-green-800 text-xl"><a>essential</a></span> of data platform, focusing on open-source-software, and customizable</div>
             <div className="flex flex-wrap justify-center gap-4 mt-4">
               <img
                 src="assets/banner/docker.jpeg"
@@ -186,14 +208,14 @@ const Home = () => {
                 className="w-24 h-16 rounded-lg shadow-md p-2"
               />
             </div>
-          </section> */}
+          </section>
 
           <section className="max-w-2xl mx-auto mb-8">
             <h2 className="text-2xl font-bold mb-4">Support and Contribution</h2>
             <p className="mb-4">
               Check out the Repository on GitHub and contribute to the project.{" "}
               <a
-                href="https://github.com/fast-datapods"
+                href="https://github.com/longbuivan/datapods-oss"
                 className="text-blue-500 underline"
               >
                 Repository on GitHub

@@ -20,30 +20,30 @@ const Docs = () => {
           <div className="container mx-auto px-4 py-1 flex justify-between items-center">
             <div className="flex items-center space-x-4">
               <img src={"icon.svg"} alt="DataPods" className="h-8" />
-              <h1 className="text-base font-bold">DataPods</h1>
+              <h1 className="text-xl font-bold">DataPods</h1>
             </div>
               <nav className="hidden md:flex md:items-center md:space-x-4 ml-4">
-                <a href="/" className="block text-base md:text-base py-2 md:py-0">
+                <a href="/" className="block text-sm md:text-base py-2 md:py-0">
                   Home
                 </a>
                 <a
                   href="/services"
-                  className="block text-base md:text-base py-2 md:py-0"
+                  className="block text-sm md:text-base py-2 md:py-0"
                 >
                   Services
                 </a>
                 <a
                   href="/docs"
-                  className="block text-base md:text-base py-2 md:py-0"
+                  className="block text-sm md:text-base py-2 md:py-0"
                 >
                   Docs
                 </a>
-                {/* <a
+                <a
                   href="https://de-book.longdatadevlog.com"
-                  className="block text-base md:text-base py-2 md:py-0"
+                  className="block text-sm md:text-base py-2 md:py-0"
                 >
                   Knowledge Base
-                </a> */}
+                </a>
               </nav>
             {/* </div> */}
             <div className="flex items-center space-x-4">
@@ -74,24 +74,24 @@ const Docs = () => {
               isNavOpen ? "block" : "hidden"
             } md:hidden px-4 pb-4`}
           >
-            <a href="/" className="block text-base md:text-base py-2 md:py-0">
+            <a href="/" className="block text-sm md:text-base py-2 md:py-0">
               Home
             </a>
             <a
               href="/services"
-              className="block text-base md:text-base py-2 md:py-0"
+              className="block text-sm md:text-base py-2 md:py-0"
             >
               Services
             </a>
-            <a href="/docs" className="block text-base md:text-base py-2 md:py-0">
+            <a href="/docs" className="block text-sm md:text-base py-2 md:py-0">
               Docs
             </a>
-            {/* <a
+            <a
               href="https://de-book.longdatadevlog.com"
-              className="block text-base md:text-base py-2 md:py-0"
+              className="block text-sm md:text-base py-2 md:py-0"
             >
               Knowledge Base
-            </a> */}
+            </a>
           </nav>
         </header>
 
@@ -108,8 +108,8 @@ const Docs = () => {
                   <li>
                     Download Dockerfile from{" "}
                     <a
-                      className="text-orange-800 text-base"
-                      href="https://github.com/fast-datapods"
+                      className="text-orange-800 text-xl"
+                      href="https://github.com/longbuivan/dotfile/tree/main/datapods-oss"
                     >
                       DataPod-OSS
                     </a>
