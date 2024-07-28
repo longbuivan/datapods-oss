@@ -15,7 +15,7 @@ export default function Pricing() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl sm:text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Hobby</h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+          <p className="mt-6 text-base leading-8 text-gray-600">
             Check out the infrastructure code for setting up your project with no limited customization and resources.
           </p>
         </div>
@@ -26,12 +26,12 @@ export default function Pricing() {
               With membership, you can only focus on the buildings of business that we help to manage all your own infrastructure structures, including alerts and monitoring as well as priority supports.
             </p>
             <div className="mt-10 flex items-center gap-x-4">
-              <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">What’s included</h4>
+              <h4 className="flex-none text-base font-semibold leading-6 text-indigo-600">What’s included</h4>
               <div className="h-px flex-auto bg-gray-100" />
             </div>
             <ul
               role="list"
-              className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6"
+              className="mt-8 grid grid-cols-1 gap-4 text-base leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6"
             >
               {includedFeatures.map((feature) => (
                 <li key={feature} className="flex gap-x-3">
@@ -47,11 +47,11 @@ export default function Pricing() {
                 <p className="text-base font-semibold text-gray-600">Start-up</p>
                 <p className="mt-6 flex items-baseline justify-center gap-x-2">
                   <span className="text-5xl font-bold tracking-tight text-gray-900">$$</span>
-                  <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">USD</span>
+                  <span className="text-base font-semibold leading-6 tracking-wide text-gray-600">USD</span>
                 </p>
                 <a
                   href="/contact"
-                  className="mt-10 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="mt-10 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Get supports
                 </a>

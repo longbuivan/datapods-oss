@@ -1,8 +1,10 @@
-# Deploying Docker Compose File Using Render
+# Deploy DataPods
+
+## Deploying Docker Compose File Using Render
 
 1. **Create a new Web Service on Render**
 
-    Go to the Render dashboard and click on 'New Web Service'. 
+    Go to the Render dashboard and click on 'New Web Service'.
 
 2. **Select Your Repository**
 
@@ -35,3 +37,33 @@ start:
     docker-compose pull && \
     docker-compose build && \
     docker-compose up -d
+
+
+## Deploy to AWS EC2
+
+> sudo yum install docker -y
+
+> sudo systemctl enable docker
+
+> sudo yum install nginx -y
+
+> sudo nano /etc/nginx/conf.d/mageai.conf
+
+```config
+server {
+    listen 80;
+
+    server_name 18.133.28.231O;
+    location / {
+        proxy_pass http://localhost:6789;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+> sudo systemctl start nginx
+
+

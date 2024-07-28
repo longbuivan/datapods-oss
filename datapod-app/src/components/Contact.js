@@ -28,7 +28,7 @@ const Contact = () => {
             <div className="container mx-auto px-4 py-4 space-x-4 flex justify-left items-center">
                 <img src={"icon.svg"} alt="DataPods" className="h-8" />{" "}
                 {/* Use the imported SVG */}
-                <h1 className="text-xl font-bold">DataPods</h1>
+                <h1 className="text-base font-bold">DataPods</h1>
             </div>
             <Nav isDarkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             </div>
@@ -42,7 +42,7 @@ const Contact = () => {
       </div>
       </div>
     </div>
-    
+
     </div>
   );
 }
