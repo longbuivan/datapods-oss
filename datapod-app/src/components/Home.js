@@ -51,23 +51,33 @@ const Home = () => {
               <h1 className="text-xl font-bold">
                 <span href="/">DataPods</span>
               </h1>
+
+              <span className="text-gray-500 text-sm font-italic ml-2">(now in beta)</span>
+
             </div>
             <div className="hidden md:flex md:items-center md:space-x-4 ml-4">
               <a href="/" className="block text-base md:text-base py-2 md:py-0">
                 Home
               </a>
-              <a
+              {/* <a
                 href="/services"
                 className="block text-base md:text-base py-2 md:py-0"
               >
                 Services
-              </a>
+              </a> */}
               <a
                 href="/docs"
                 className="block text-base md:text-base py-2 md:py-0"
               >
                 Docs
               </a>
+              <p
+                // href="/"
+                className="block text-gray-500 text-base md:text-base py-2 md:py-0"
+              >
+                Join with us
+              </p>
+
               {/* <a href="https://de-book.longdatadevlog.com" className="block text-base md:text-base py-2 md:py-0">
                 Knowledge Base
               </a> */}
