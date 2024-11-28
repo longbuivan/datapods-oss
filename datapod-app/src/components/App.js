@@ -7,6 +7,7 @@ import {
 
 import Home from "./Home";
 import Docs from "./Docs";
+import About from "./About";
 import Contact from "./Contact";
 import Pricing from "./Prices";
 import ApplicationSelector from "./ApplicationSelector";
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route path="/docs">
             <Docs />
+          </Route>
+          <Route path="/about">
+            <About />
           </Route>
           <Route path="/contact">
             <Contact />

@@ -19,8 +19,8 @@ const Nav = () => {
           Services
         </a>
 
-        <a href="/docs" className="text-base md:text-base">
-          Docs
+        <a href="/about" className="text-base md:text-base">
+          About
         </a>
         <a
           href="https://de-book.longdatadevlog.com"

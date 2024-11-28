@@ -20,13 +20,15 @@ const Docs = () => {
           <div className="container mx-auto px-4 py-1 flex justify-between items-center">
             <div className="flex items-center space-x-4">
               <img src={"icon.svg"} alt="DataPods" className="h-8" />
-              <h1 className="text-xl font-bold">DataPods</h1>
+              <h1 className="text-xl font-bold cursor-pointer" onClick={() => window.location.href='/'}>DataPods</h1>
+              <span className="text-gray-500 background-yellow-100 rounded-full text-sm font-italic ml-2">(now in beta)</span>
+
             </div>
               <div className="hidden md:flex md:items-center md:space-x-4 ml-4">
                 {/* <a href="/" className="block text-base md:text-base py-2 md:py-0">
                   Home
-                </a> */}
-                {/* <a
+                </a>
+                <a
                   href="/services"
                   className="block text-base md:text-base py-2 md:py-0"
                 >
@@ -38,6 +40,13 @@ const Docs = () => {
                 >
                   About
                 </a>
+                <p
+                  // href="/"
+                  className="block text-gray-500 text-base md:text-base py-2 md:py-0"
+                >
+                  Join with us
+                </p>
+
                 {/* <a
                   href="https://de-book.longdatadevlog.com"
                   className="block text-base md:text-base py-2 md:py-0"
@@ -73,16 +82,16 @@ const Docs = () => {
               isNavOpen ? "block" : "hidden"
             } md:hidden px-4 pb-4`}
           >
-            <a href="/" className="block text-base md:text-base py-2 md:py-0">
+            {/* <a href="/" className="block text-base md:text-base py-2 md:py-0">
               Home
             </a>
-            <a
+            {/* <a
               href="/services"
               className="block text-base md:text-base py-2 md:py-0"
             >
               Services
-            </a>
-            <a href="/about" className="block text-base md:text-base py-2 md:py-0">
+            </a> */}
+            <a href="/about"className="block text-base md:text-base py-2 md:py-0">
               About
             </a>
             {/* <a
@@ -96,7 +105,7 @@ const Docs = () => {
 
         <div className=" doc-container max-w-2xl mx-auto mb-8">
           <div className="container mx-auto py-12 px-4">
-            {/* <h1 className="text-3xl font-bold mb-8">Documentation</h1> */}
+            <h1 className="text-3xl font-bold mb-8">Documentation</h1>
 
             <section className=" mb-8">
               <h2 className="text-2xl font-semibold mb-4">

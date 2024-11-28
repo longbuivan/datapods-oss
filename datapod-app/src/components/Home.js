@@ -48,17 +48,14 @@ const Home = () => {
           <div className="container mx-auto px-4 py-1 flex justify-between items-center">
             <div className="flex items-center space-x-4">
               <img src={"icon.svg"} alt="DataPods" className="h-8" href="/" />
-              <h1 className="text-xl font-bold">
-                <span href="/">DataPods</span>
-              </h1>
-
-              <span className="text-gray-500 text-sm font-italic ml-2">(now in beta)</span>
+              <h1 className="text-xl font-bold cursor-pointer" onClick={() => window.location.href='/'}>DataPods</h1>
+              <span className="text-gray-500 background-yellow-100 rounded-full text-sm font-italic ml-2">(now in beta)</span>
 
             </div>
             <div className="hidden md:flex md:items-center md:space-x-4 ml-4">
-              <a href="/" className="block text-base md:text-base py-2 md:py-0">
+              {/* <a href="/" className="block text-base md:text-base py-2 md:py-0">
                 Home
-              </a>
+              </a> */}
               {/* <a
                 href="/services"
                 className="block text-base md:text-base py-2 md:py-0"
@@ -66,10 +63,10 @@ const Home = () => {
                 Services
               </a> */}
               <a
-                href="/docs"
+                href="/about"
                 className="block text-base md:text-base py-2 md:py-0"
               >
-                Docs
+                About
               </a>
               <p
                 // href="/"
@@ -112,7 +109,7 @@ const Home = () => {
           <div
             className={`${isNavOpen ? "block" : "hidden"} md:hidden px-4 pb-4`}
           >
-            <a href="/" className="block text-base md:text-base py-2 md:py-0">
+            {/* <a href="/" className="block text-base md:text-base py-2 md:py-0">
               Home
             </a>
             <a
@@ -120,12 +117,12 @@ const Home = () => {
               className="block text-base md:text-base py-2 md:py-0"
             >
               Services
-            </a>
+            </a> */}
             <a
-              href="/docs"
+              href="/about"
               className="block text-base md:text-base py-2 md:py-0"
             >
-              Docs
+              About
             </a>
             {/* <a
               href="https://de-book.longdatadevlog.com"
@@ -167,12 +164,12 @@ const Home = () => {
               className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-400 dark:hover:bg-gray-600 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex items-center space-x-2"
             >
               <DownloadIcon className="h-5 w-5" />
-              <a href="/docs">Self-hosted</a>
+              <a href="/about">Self-hosted</a>
             </button>
           </div>
           <div className="header-title pb-5 text-xl flex justify-center items-center">
             <span className="text-yellow-500 hover:text-orange-500 underline">
-              <a href="/docs">Screenshots</a>
+              <a href="/about">Screenshots</a>
             </span>
           </div>
         </div>
