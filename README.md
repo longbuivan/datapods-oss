@@ -1,5 +1,9 @@
 # DataPods Project
 
+<div style="text-align: center; background: linear-gradient(45deg, #1a365d, #2a4365); color: white;">
+    <h1 style="font-size: 2.5em; margin-bottom: 10px;">The Data Foundation Project</h1>
+</div>
+
 ## Description
 
 <!-- ![Background](/docs/assets/background.jpeg) -->
@@ -26,7 +30,7 @@ Check out the reference documentation for more information and know why DataPods
 |--- | --- | --- |
 |Data Ingestion & Integration | [Mage]() | Helping to easy connect and ingest data from multiple sources.|
 | Database | [PostgreSQL]() | Storing internal data, metadata, or even data warehouse. |
-| Data Warehouse | [Clickhouse (optional)]() | Building CUBE, OLAP |
+| Data Warehouse | [Clickhouse (optional)]() <br> [duckdb]() | Building CUBE, OLAP |
 | Visualization | [Metabase]() | Visualizing charts, dashboard |
 | Audit and logging | [Prometheus]() | Getting metrics from system, maintaining infrastructure. |
 
@@ -263,3 +267,10 @@ docker-compose up -d
  ✔ Container superset                          Running                                                   0.0s
  ✔ Container datapods-docker-nginx_superset-1  Running
 ```
+
+## License
+By contributing, you agree that your contributions will be licensed under its [BSD 3-Clause License](LICENSE).
+
+## Contribution
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
