@@ -1,8 +1,6 @@
 # DataPods Project
 
-<div style="text-align: center; background: linear-gradient(45deg, #1a365d, #2a4365); color: white;">
-    <h1 style="font-size: 2.5em; margin-bottom: 10px;">The Data Foundation Project</h1>
-</div>
+The Data Foundation Project.
 
 ## Description
 
