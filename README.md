@@ -2,6 +2,21 @@
 
 The Data Foundation Project.
 
+- [2025-02-18] Updated the project deployment with Railway with [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/template/rRK6Ge?referralCode=vyY5rL)
+
+## Table of Contents
+
+- [Description](#description)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Conclusions](#conclusions)
+- [Enhancement and ready for MVP](#enhancement-and-ready-for-mvp)
+- [Deployment](#deployment)
+- [Demo](#demo)
+- [Launch Data Services](#launch-data-services)
+- [License](#license)
+- [Contribution](#contribution)
+
 ## Description
 
 <!-- ![Background](/docs/assets/background.jpeg) -->
@@ -28,7 +43,7 @@ Check out the reference documentation for more information and know why DataPods
 |--- | --- | --- |
 |Data Ingestion & Integration | [Mage]() | Helping to easy connect and ingest data from multiple sources.|
 | Database | [PostgreSQL]() | Storing internal data, metadata, or even data warehouse. |
-| Data Warehouse | [Clickhouse (optional)]() <br> [duckdb]() | Building CUBE, OLAP |
+| Data Warehouse | [Clickhouse (optional)]() <br> [duckdb]() <br> [Postgres]()| Building CUBE, OLAP |
 | Visualization | [Metabase]() | Visualizing charts, dashboard |
 | Audit and logging | [Prometheus]() | Getting metrics from system, maintaining infrastructure. |
 
@@ -228,6 +243,36 @@ kubectl get pods -o wide -n analytics-project
 Connect to database using Grafana data source and start to visualize your data!
 
 <!-- ![Connect database](/docs/assets/connect-db.png) -->
+
+## Deployment
+
+### Deployment with Kubernetes (k3s)
+
+Install k3s on your machine, please check this [link](https://k3s.io/docs/install/k3s-install/) for more information.
+
+```shell
+curl -sfL https://get.k3s.io | sh -
+```
+
+After installation, you can check the status of the cluster by running the following command:
+
+```shell
+k3s kubectl get nodes
+```
+
+Deploy the DataPods project by running the following command:
+
+```shell
+git clone https://github.com/longbuivan/datapods-oss.git
+cd datapods-oss
+make start-kube
+```
+
+### Deployment with Railway
+
+I wrapped the DataPods project with Railway, you can check this [template here](https://railway.com/template/rRK6Ge?referralCode=vyY5rL) for more information.
+
+![](/docs/assets/railway-deploy.png)
 
 ## Demo
 

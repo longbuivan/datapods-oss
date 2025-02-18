@@ -1,4 +1,0 @@
-mage-ai[s3] 
-mage-ai[clickhouse]
-mage-ai[postgres]
-# mage-ai[metabase]
