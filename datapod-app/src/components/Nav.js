@@ -18,6 +18,9 @@ const Nav = () => {
         <a href="/services" className="text-base md:text-base">
           Services
         </a>
+        <a href="/onboard" className="text-base md:text-base">
+          Onboard data
+        </a>
 
         <a href="/about" className="text-base md:text-base">
           About

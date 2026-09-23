@@ -150,16 +150,41 @@ services:
     # networks:
     #   - app-network
 
+  datapod-api:
+    build:
+      context: ../../datapod-api/
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      MAGE_PROJECT_PATH: /mage_project
+      MAGE_URL: ${MAGE_URL:-http://localhost:6789}
+      DATAPODS_STORE: /app/data/datapods.json
+      AI_BASE_URL: ${AI_BASE_URL:-https://api.openai.com/v1}
+      AI_API_KEY: ${AI_API_KEY:-}
+      AI_MODEL: ${AI_MODEL:-gpt-4o-mini}
+    volumes:
+      - ./etl:/mage_project
+      - datapod_api_data:/app/data
+    networks:
+      - app-network
+
   landingpage:
     # image: landing_page:v01
     build:
       context: ../../datapod-app/
       dockerfile: Dockerfile
+    environment:
+      REACT_APP_API_URL: ${REACT_APP_API_URL:-http://localhost:8080}
     ports:
       - "3000:3000"
     volumes:
           - ../../datapod-app:/app
+    depends_on:
+      - datapod-api
 volumes:
+  datapod_api_data:
+    external: false
   db_home:
     external: false
   superset_home:

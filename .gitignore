@@ -9,3 +9,5 @@ duckdb*
 
 
 .env
+node_modules/
+datapod-api/data/
