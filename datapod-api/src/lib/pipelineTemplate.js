@@ -208,7 +208,7 @@ remote_variables_dir: null
 run_pipeline_in_one_process: false
 settings:
   triggers:
-    schedule_interval: ${schedule || "@daily"}
+    schedule_interval: '${schedule || "@daily"}'
 spark_config: {}
 tags: [datapods, onboarding]
 type: python

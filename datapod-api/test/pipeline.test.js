@@ -1,6 +1,8 @@
 const assert = require("node:assert/strict");
 const { test } = require("node:test");
 
+const yaml = require("js-yaml");
+
 const { buildPipeline } = require("../src/lib/pipelineTemplate");
 const { generatePipeline, parseJson, mergeWithTemplate } = require("../src/lib/ai");
 
@@ -21,6 +23,20 @@ test("template pipeline contains loader, transformer, exporter and metadata", ()
   assert.ok(pipeline.files.some((file) => file.path.endsWith("metadata.yaml")));
   assert.ok(pipeline.blocks[0].content.includes("select * from public.orders"));
   assert.ok(pipeline.requirements.includes("clickhouse-connect"));
+});
+
+test("metadata.yaml is parseable and keeps the schedule and block graph", () => {
+  const pipeline = buildPipeline({ ...request, schedule: "@hourly" });
+  const metadata = pipeline.files.find((file) => file.path.endsWith("metadata.yaml"));
+  const parsed = yaml.load(metadata.content);
+
+  assert.equal(parsed.settings.triggers.schedule_interval, "@hourly");
+  assert.deepEqual(
+    parsed.blocks.map((block) => block.uuid),
+    pipeline.blocks.map((block) => block.uuid)
+  );
+  assert.deepEqual(parsed.blocks[0].upstream_blocks, []);
+  assert.deepEqual(parsed.blocks[2].downstream_blocks, []);
 });
 
 test("parseJson reads fenced model output", () => {
