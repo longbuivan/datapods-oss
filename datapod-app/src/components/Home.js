@@ -146,6 +146,12 @@ const Home = () => {
           </div>
 
           <div className="flex flex-col md:flex-row m-5 justify-center mb-4 space-y-4 md:space-y-0 md:space-x-4">
+            <a
+              href="/onboard"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex items-center space-x-2"
+            >
+              <span>Onboard your data</span>
+            </a>
             <button
               onClick={() => {
                 // Add download functionality here

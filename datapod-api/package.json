@@ -1,0 +1,24 @@
+{
+  "name": "datapod-api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DataPods onboarding API: data connections and AI assisted pipeline generation",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node --test test/*.test.js"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
+  }
+}

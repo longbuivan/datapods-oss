@@ -11,11 +11,15 @@ import About from "./About";
 import Contact from "./Contact";
 import Pricing from "./Prices";
 import ApplicationSelector from "./ApplicationSelector";
+import Onboard from "./Onboard";
 
 function App() {
   return (
     <Router>
         <Switch>
+          <Route path="/onboard">
+            <Onboard />
+          </Route>
         <Route path="/services">
             <ApplicationSelector />
           </Route>
@@ -34,8 +38,6 @@ function App() {
           <Route path="/">
             <Home />
           </Route>
-
-x
         </Switch>
       {/* </AuthProvider> */}
     </Router>

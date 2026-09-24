@@ -7,6 +7,7 @@ The Data Foundation Project.
 ## Table of Contents
 
 - [Description](#description)
+- [Onboard your data](#onboard-your-data)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Conclusions](#conclusions)
@@ -48,6 +49,31 @@ Check out the reference documentation for more information and know why DataPods
 | Audit and logging | [Prometheus]() | Getting metrics from system, maintaining infrastructure. |
 
 *Note: Reaching out to me if you have any questions help help needs*
+
+## Onboard your data
+
+DataPods ships a guided onboarding flow so a new user can go from credentials to a running
+pipeline without writing a Mage block by hand.
+
+- `datapod-app` serves the wizard at `/onboard`: connect a source, pick a destination inside
+  your pod, describe the pipeline in plain language, review the generated blocks, deploy.
+- `datapod-api` backs it: connector catalog, live connection tests, AI pipeline generation and
+  writing the result into the Mage project that `datapod-server` mounts.
+
+```shell
+cd datapod-server/datapods-docker
+cp ../../datapod-api/.env.example .env.datapod-api   # optional: set AI_API_KEY
+docker-compose up -d datapod-api landingpage mage
+
+# wizard    http://localhost:3000/onboard
+# api       http://localhost:8080/health
+# mage      http://localhost:6789
+```
+
+Pipeline generation targets any OpenAI compatible endpoint (`AI_BASE_URL`, `AI_API_KEY`,
+`AI_MODEL`). Without a key, DataPods falls back to its built in template generator, so the
+onboarding flow still produces a runnable pipeline. Secrets entered in the wizard are used for
+the connection test only and are never persisted — see [datapod-api/README.md](datapod-api/README.md).
 
 ## (Option 1) Running Docker
 
